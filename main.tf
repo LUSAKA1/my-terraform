@@ -5,7 +5,7 @@ provider "aws" {
 
 #Create security group with firewall rules
 resource "aws_security_group" "my_security_group" {
-  name        = var.security_group
+  name        = "jenkins-sg-dec-2023"
   description = "security group for Ec2 instance"
   ingress {
     from_port   = 8080
@@ -34,7 +34,7 @@ resource "aws_instance" "myFirstInstance" {
   ami           = var.ami_id
   key_name = var.key_name
   instance_type = var.instance_type
-  security_groups= [var.security_group]
+  security_groups= ["jenkins-sg-dec-2023"]
   tags= {
     Name = var.tag_name
   }
